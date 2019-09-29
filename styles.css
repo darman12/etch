@@ -14,10 +14,16 @@ p  { font-size: 1.6em; }
     display: grid;
     width: 500px;
     height: 500px;
+    background-image: linear-gradient(to right, #44c2fc, #af44fc);
 }
 
-div {
+.grid-cell {
     border: 1px;
     border-style: dotted;
     border-color: #44c2fc;
+    transition:.5s;
+}
+
+.invisible {
+    opacity: 0;
 }
