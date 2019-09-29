@@ -1,21 +1,23 @@
-init();
+init(16);
 
-function init() {
-    createGrid(16);
+function init(gridSize) {
+    createGrid(gridSize);
     createListeners();
 
     const resetButton = document.getElementById("reset-button");
+    resetButton.addEventListener('click', reset);
     
-    resetButton.addEventListener('click', () => {
-        let cells = document.querySelectorAll(".grid-cell");
-        cells.forEach((cell) => {
-            cell.classList.remove("invisible");
-        });
-    });
+    const resizeButton = document.getElementById("resize-button");
+    resizeButton.addEventListener('click', resizeGrid);
 }
 
 function createGrid(gridSize) {
     let gridArea = document.getElementById("grid-area");
+
+    // Restricting size of grid so it doesn't freeze the brwoser
+    gridSize = (gridSize > 100) ? 100 
+             : (gridSize < 0) ? 16
+             : gridSize;
 
     gridArea.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 
@@ -27,12 +29,33 @@ function createGrid(gridSize) {
 }
 
 function createListeners() {
-    let cells = document.querySelectorAll(".grid-cell");
+    let cells = getCells();
     
     cells.forEach((cell) => {
         cell.addEventListener('mouseenter', () => {
-            // cell.style.backgroundColor = "#44c2fc";
-            cell.classList.toggle("invisible");
+            cell.classList.add("invisible");
         });
     });
+}
+
+function reset() {
+    let cells = getCells();
+    cells.forEach((cell) => {
+        cell.classList.remove("invisible");
+    });
+}
+
+function resizeGrid() {
+    cells = getCells();
+
+    cells.forEach((cell) => {
+        cell.parentNode.removeChild(cell);
+    });
+
+    init(prompt("How big should the grid be?", 16));
+}
+
+function getCells() {
+    return document.querySelectorAll(".grid-cell");
+
 }
