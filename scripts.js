@@ -22,9 +22,10 @@ function createGrid(gridSize) {
     gridArea.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 
     for (let i = 0; i < gridSize ** 2; i++) {
-        const div = document.createElement("div");
-        div.classList.add("grid-cell");
-        gridArea.appendChild(div);
+        const cell = document.createElement("div");
+        cell.style.transition = `${Math.random()}s`;
+        cell.classList.add("grid-cell");
+        gridArea.appendChild(cell);
     }
 }
 
@@ -41,6 +42,7 @@ function createListeners() {
 function reset() {
     let cells = getCells();
     cells.forEach((cell) => {
+        cell.style.transition = `${Math.random()}s`;
         cell.classList.remove("invisible");
     });
 }

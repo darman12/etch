@@ -61,7 +61,7 @@ button {
     border: .5px;
     border-style: solid;
     border-color: #44c2fc;
-    transition:.5s;
+    transition: .5s;
 
     border-radius: .6em;
 }
