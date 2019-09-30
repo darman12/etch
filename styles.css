@@ -22,6 +22,12 @@ p {
     text-align: center;
 }
 
+#controls {
+    text-align: center;    
+    width: 500px;
+    margin: 0 auto;
+}
+
 button {
     font-size: 1.6em;
     padding: .5em;
@@ -35,12 +41,6 @@ button {
 #reset-button {
     color: #fc4485;
     border: solid 1px #fc4485;
-}
-
-#controls {
-    text-align: center;    
-    width: 500px;
-    margin: 0 auto;
 }
 
 #grid-area {
@@ -63,6 +63,7 @@ button {
     border-color: #44c2fc;
     transition: .5s;
 
+    opacity: .75;
     border-radius: .6em;
 }
 
