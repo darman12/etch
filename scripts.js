@@ -23,7 +23,7 @@ function createGrid(gridSize) {
 
     for (let i = 0; i < gridSize ** 2; i++) {
         const cell = document.createElement("div");
-        cell.style.transition = `${Math.random()}s`;
+        cell.style.transition = `${Math.random() * 2}s`;
         cell.classList.add("grid-cell");
         gridArea.appendChild(cell);
     }
