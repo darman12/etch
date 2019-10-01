@@ -42,7 +42,7 @@ function createListeners() {
 function reset() {
     let cells = getCells();
     cells.forEach((cell) => {
-        cell.style.transition = `${Math.random()}s`;
+        cell.style.transition = `${Math.random() * 2}s`;
         cell.classList.remove("invisible");
     });
 }
