@@ -1,0 +1,60 @@
+/***********
+* Contains style rules for the footer I use across my sites/web apps.
+*
+* The HTML for the footer is at the bottom for convenience.
+*/
+
+/*------ Footer content ------*/
+footer {
+    color: rgb(167, 167, 167);
+    
+    
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer * {
+    background-color: transparent;
+}
+
+footer > p {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+
+    line-height: 42px;
+
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
+}
+
+#attribution {
+    background-image: linear-gradient(to right, #44c2fc, #af44fc);
+
+    color: white;
+}
+
+#heart {
+    background: transparent;
+}
+
+#heart:hover {
+    color: red;
+}
+
+#github-logo {
+    position: relative;
+    top: 4px;
+    margin: 0 0 0 3px;
+    width: 2rem;
+    height: 2rem;
+}
+
+
+
+/******** Footer HTML ************
+
+<footer>
+    <p id="attribution">Created w/<i class="fas fa-heart" id="heart"></i> by Spencer Freebairn <a href="https://github.com/darman12/cash-adder" target="blank"><img id="github-logo" src="dist/assets//GitHub-Mark-Light-32px.png" alt="GitHub logo white"></a></p>
+</footer>
+*/
