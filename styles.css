@@ -41,6 +41,11 @@ button {
     border: solid 1px #44c2fc;
 }
 
+button:hover,
+button:focus {
+    outline: none;
+}
+
 #reset-button {
     color: #fc4485;
     border: solid 1px #fc4485;
