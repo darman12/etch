@@ -43,6 +43,24 @@ button {
     border: solid 1px #fc4485;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    -moz-box-shadow: 0 0 .75rem;
+    -webkit-box-shadow: 0 0 .75rem;
+    -o-box-shadow: 0 0 .75rem;
+    box-shadow: 0 0 .75rem #44c2fc;
+}
+
+#reset-button:hover {
+    -moz-box-shadow: 0 0 .75rem;
+    -webkit-box-shadow: 0 0 .75rem;
+    -o-box-shadow: 0 0 .75rem;
+    box-shadow: 0 0 .75rem #fc4485;
+}
+
 #grid-area {
     display: grid;
     width: 500px;
