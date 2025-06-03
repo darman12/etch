@@ -14,11 +14,6 @@ function init(gridSize) {
 function createGrid(gridSize) {
     let gridArea = document.getElementById("grid-area");
 
-    // Restricting size of grid so it doesn't freeze the brwoser
-    gridSize = (gridSize > 100) ? 100 
-             : (gridSize < 0) ? 16
-             : gridSize;
-
     gridArea.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 
     for (let i = 0; i < gridSize ** 2; i++) {
@@ -47,14 +42,28 @@ function reset() {
     });
 }
 
-function resizeGrid() {
-    cells = getCells();
+function isNumeric(value) {
+    return /^\d+$/.test(value);
+}
+   
+function promptForNumber() {
+    let processed_input
+    do {
+	let raw_input = prompt("Enter a number between 2 and 25:");
+	    if (raw_input === null) { return null }
+	processed_input = Number(raw_input)
+    } while (!isNumeric(processed_input) || processed_input < 2 || processed_input > 25)
+    return processed_input
+}	  
 
+function resizeGrid() {
+    new_size = promptForNumber()
+    if (new_size === null) { return }
+    cells = getCells();
     cells.forEach((cell) => {
         cell.parentNode.removeChild(cell);
     });
-
-    init(prompt("How big should the grid be?", 16));
+    init(new_size)
 }
 
 function getCells() {
