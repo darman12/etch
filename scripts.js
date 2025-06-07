@@ -28,8 +28,11 @@ function createListeners() {
     let cells = getCells();
     
     cells.forEach((cell) => {
-        cell.addEventListener('mouseenter', () => {
-            cell.classList.add("invisible");
+        cell.addEventListener('mouseenter', (event) => {
+	    if (event.buttons === 1) {
+                console.log("left button pressed");
+	        cell.classList.add("invisible");
+            }
         });
     });
 }
