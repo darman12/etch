@@ -1,3 +1,28 @@
+class Cell extends HTMLDivElement {
+    constructor() {
+        super();
+        console.log("testing");
+    }
+
+    transitionTime = 4;
+
+    connectedCallback() {
+        this.transitionTime = Math.random() * 2;
+        console.log(`cell created`);
+    }
+
+    connectedMoveCallback() {
+        // Prevents Cell from being re-initialized if it is moved in the DOM,
+        // per advice from https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
+        return;
+    }
+     
+}
+
+customElements.define("grid-cell", Cell, { extends: "div" });
+
+/*****************************************************************************/
+
 init(16);
 
 function init(gridSize) {
@@ -11,6 +36,7 @@ function init(gridSize) {
     resizeButton.addEventListener('click', resizeGrid);
 }
 
+
 function createGrid(gridSize) {
     let gridArea = document.getElementById("grid-area");
 
@@ -22,6 +48,10 @@ function createGrid(gridSize) {
         cell.classList.add("grid-cell");
         gridArea.appendChild(cell);
     }
+    
+    const newCell = document.createElement("grid-cell", { is: "grid-cell" });
+    gridArea.appendChild(newCell);
+    console.log(newCell.transitionTime);
 }
 
 function createListeners() {
@@ -29,9 +59,11 @@ function createListeners() {
     
     cells.forEach((cell) => {
         cell.addEventListener('mouseenter', (event) => {
+	    console.log(event.buttons);
 	    if (event.buttons === 1) {
-                console.log("left button pressed");
 	        cell.classList.add("invisible");
+            } else if (event.buttons === 2) {
+	        cell.classList.remove("invisible");
             }
         });
     });
