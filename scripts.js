@@ -1,14 +1,13 @@
 class Cell extends HTMLDivElement {
     constructor() {
         super();
-        console.log("testing");
     }
 
     transitionTime = 4;
 
     connectedCallback() {
         this.transitionTime = Math.random() * 2;
-        console.log(`cell created`);
+        this.classList.add("grid-cell");
     }
 
     connectedMoveCallback() {
@@ -43,15 +42,9 @@ function createGrid(gridSize) {
     gridArea.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
 
     for (let i = 0; i < gridSize ** 2; i++) {
-        const cell = document.createElement("div");
-        cell.style.transition = `${Math.random() * 2}s`;
-        cell.classList.add("grid-cell");
+        const cell = document.createElement("div", { is: "grid-cell" });
         gridArea.appendChild(cell);
     }
-    
-    const newCell = document.createElement("grid-cell", { is: "grid-cell" });
-    gridArea.appendChild(newCell);
-    console.log(newCell.transitionTime);
 }
 
 function createListeners() {
